@@ -2,6 +2,9 @@ import express from "express"
 import cors from 'cors'
 import helmet from "helmet"
 import morgan from "morgan"
+
+import productRoutes from '../src/products/product.routes.js'
+import categoryRoutes from '../src/category/category.routes.js'
 const configs = (app)=>{
     app.use(express.json())
     app.use(express.urlencoded({extended:false}))
@@ -10,7 +13,9 @@ const configs = (app)=>{
     app.use(morgan('dev'))
 }
 
-const routes = ()=>{
+const routes = (app)=>{
+    app.use(productRoutes)
+    app.use(categoryRoutes)
 }
 
 
