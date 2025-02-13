@@ -1,0 +1,17 @@
+{
+  "name": "ventasonline",
+  "version": "1.0.0",
+  "description": "buy and shop different products in the web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "online",
+    "web",
+    "buy",
+    "shop"
+  ],
+  "author": "Nery de la Cruz (ND)",
+  "license": "MIT"
+}
