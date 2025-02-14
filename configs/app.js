@@ -17,10 +17,10 @@ const configs = (app)=>{
 }
 
 const routes = (app)=>{
-    app.use('/v1/admin',productRoutes)
-    app.use('/v1/admin',categoryRoutes)
-    app.use('/v1/admin',adminRoutes)
-    app.use('/v1/admin',authRoutes)
+    app.use('/v1/user',productRoutes)
+    app.use('/v1/user',categoryRoutes)
+    app.use('/v1/user',adminRoutes)
+    app.use('/v1/user',authRoutes)
 }
 
 
