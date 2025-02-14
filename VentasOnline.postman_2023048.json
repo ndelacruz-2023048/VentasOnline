@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "f51f641d-a6d2-4d34-a092-3132917e9cdf",
+		"name": "VentasOnline",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37956955"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "NewProduct",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2FmMDBhNTc1ZTdmNGJjZTQ2MGIxOGUiLCJ1c2VybmFtZSI6ImRhdmlkQGtpbmFsLmVkdS5ndCIsIm5hbWUiOiJEYXZpZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTUyNDEzOSwiZXhwIjoxNzM5NTM0OTM5fQ.L3_cOHUZ8OV1Anxabq6nBKqNIUE_poxcTfVKsQdvmfw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Boligrafo BIC",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Boligrafo de tinta negrea, no resiste tres mordidas",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "10.50",
+									"type": "text"
+								},
+								{
+									"key": "discountedPrice",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67aec05c09d81e61bc0b3309",
+									"type": "text"
+								},
+								{
+									"key": "size",
+									"value": "10cm",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:2636/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2FmMDBhNTc1ZTdmNGJjZTQ2MGIxOGUiLCJ1c2VybmFtZSI6ImRhdmlkQGtpbmFsLmVkdS5ndCIsIm5hbWUiOiJEYXZpZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTUyNDEzOSwiZXhwIjoxNzM5NTM0OTM5fQ.L3_cOHUZ8OV1Anxabq6nBKqNIUE_poxcTfVKsQdvmfw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Sacabocados",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Sacabocados para crear perforaciones de un agujero",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "25.35",
+									"type": "text"
+								},
+								{
+									"key": "discountedPrice",
+									"value": "22.20",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67aed57cf766afd6a0f7990f",
+									"type": "text"
+								},
+								{
+									"key": "size",
+									"value": "20cm",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:2636/productUpdate/67af09e3efb45958ea04dcc1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"productUpdate",
+								"67af09e3efb45958ea04dcc1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2FmMDBhNTc1ZTdmNGJjZTQ2MGIxOGUiLCJ1c2VybmFtZSI6ImRhdmlkQGtpbmFsLmVkdS5ndCIsIm5hbWUiOiJEYXZpZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTUyNDEzOSwiZXhwIjoxNzM5NTM0OTM5fQ.L3_cOHUZ8OV1Anxabq6nBKqNIUE_poxcTfVKsQdvmfw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:2636/productDelete/67af0ce338d3ceb04986009b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"productDelete",
+								"67af0ce338d3ceb04986009b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProducts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2FmMDBhNTc1ZTdmNGJjZTQ2MGIxOGUiLCJ1c2VybmFtZSI6ImRhdmlkQGtpbmFsLmVkdS5ndCIsIm5hbWUiOiJEYXZpZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTUyNDEzOSwiZXhwIjoxNzM5NTM0OTM5fQ.L3_cOHUZ8OV1Anxabq6nBKqNIUE_poxcTfVKsQdvmfw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:2636/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "New Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nameCategory",
+									"value": "Utiles Escolares",
+									"type": "text"
+								},
+								{
+									"key": "descriptionCategory",
+									"value": "De todo para el regreso a clases",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:2636/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCategory",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2FmMDBhNTc1ZTdmNGJjZTQ2MGIxOGUiLCJ1c2VybmFtZSI6ImRhdmlkQGtpbmFsLmVkdS5ndCIsIm5hbWUiOiJEYXZpZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTUyNDEzOSwiZXhwIjoxNzM5NTM0OTM5fQ.L3_cOHUZ8OV1Anxabq6nBKqNIUE_poxcTfVKsQdvmfw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nameCategory",
+									"value": "Limpieza",
+									"type": "text"
+								},
+								{
+									"key": "descriptionCategory",
+									"value": "Productos de limpieza para el hogar",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:2636/updateCategory/67aec05c09d81e61bc0b3302",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"updateCategory",
+								"67aec05c09d81e61bc0b3302"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCategory",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2FmMDBhNTc1ZTdmNGJjZTQ2MGIxOGUiLCJ1c2VybmFtZSI6ImRhdmlkQGtpbmFsLmVkdS5ndCIsIm5hbWUiOiJEYXZpZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTUyNDEzOSwiZXhwIjoxNzM5NTM0OTM5fQ.L3_cOHUZ8OV1Anxabq6nBKqNIUE_poxcTfVKsQdvmfw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:2636/deleteCategory/67af0aad07cdacaac56be995",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"deleteCategory",
+								"67af0aad07cdacaac56be995"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCategories",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2FmMDBhNTc1ZTdmNGJjZTQ2MGIxOGUiLCJ1c2VybmFtZSI6ImRhdmlkQGtpbmFsLmVkdS5ndCIsIm5hbWUiOiJEYXZpZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTUyNDEzOSwiZXhwIjoxNzM5NTM0OTM5fQ.L3_cOHUZ8OV1Anxabq6nBKqNIUE_poxcTfVKsQdvmfw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:2636/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "NewAdmin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "David",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "david@kinal.edu.gt",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "45drerA@",
+											"type": "text"
+										},
+										{
+											"key": "state",
+											"value": "activo",
+											"type": "text"
+										},
+										{
+											"key": "rol",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:2636/admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"admin"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Client",
+					"item": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
