@@ -12,7 +12,6 @@ const categorySchema = Schema({
 },
 {
     versionKey:false,
-    timestamps:true
 }
 )
 

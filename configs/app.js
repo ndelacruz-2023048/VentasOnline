@@ -7,6 +7,7 @@ import productRoutes from '../src/products/product.routes.js'
 import categoryRoutes from '../src/category/category.routes.js'
 import adminRoutes from '../src/admin/admin.routes.js'
 import authRoutes from '../src/auth/auth.routes.js'
+import { defaultCategory } from "../src/category/category.controller.js"
 
 const configs = (app)=>{
     app.use(express.json())
@@ -30,6 +31,7 @@ export const initServer = ()=>{
     try {
         configs(app)
         routes(app)
+        defaultCategory()
         app.listen(process.env.PORT)
         console.log(`Server running in port ${process.env.PORT}`);
     } catch (error) {

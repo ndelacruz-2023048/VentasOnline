@@ -19,9 +19,8 @@ export const getProductsById = async(request,response)=>{
     try {
         let {id_product} = request.params
         let products = await Product.findOne({_id:id_product}).populate('category')
-        console.log(products)
-        if(products.length===0){
-            return response.status(400).send({success:false,message:'No products yet.'})
+        if(!products){
+            return response.status(400).send({success:false,message:'Product Id is not valid'})
         }
 
         response.status(200).send({success:true,message:'Products fetched succesfully',products})
