@@ -5,6 +5,9 @@ import morgan from "morgan"
 
 import productRoutes from '../src/products/product.routes.js'
 import categoryRoutes from '../src/category/category.routes.js'
+import adminRoutes from '../src/admin/admin.routes.js'
+import authRoutes from '../src/auth/auth.routes.js'
+
 const configs = (app)=>{
     app.use(express.json())
     app.use(express.urlencoded({extended:false}))
@@ -16,6 +19,8 @@ const configs = (app)=>{
 const routes = (app)=>{
     app.use(productRoutes)
     app.use(categoryRoutes)
+    app.use(adminRoutes)
+    app.use(authRoutes)
 }
 
 

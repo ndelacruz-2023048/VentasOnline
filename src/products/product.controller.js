@@ -14,8 +14,9 @@ export const getProducts = async(request,response)=>{
 export const saveProducts =async (request,response)=>{
     try {
         let data = request.body
+        console.log(data);
+        
         let isValidCategory = await Category.findOne({_id:data.category})
-        console.log(isValidCategory);
         let newProduct = new Product(data)
         await newProduct.save()
         response.status(200).send({success:true,message:'Product saved succesfully'})
