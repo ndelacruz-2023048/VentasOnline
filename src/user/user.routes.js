@@ -1,9 +1,11 @@
 import { Router } from "express";
-import { saveAdmin } from "./user.controller.js";
-import { registerAdmin } from "../../middelwares/validators.js";
+import { signUpAdmin, signUpClient } from "./user.controller.js";
+import { registerUser } from "../../middelwares/validators.js";
+import { validateJwt } from "../../middelwares/validate.jwt.js";
 
-let apiAdmin = Router()
+let apiUser = Router()
 
-apiAdmin.post('/admin',registerAdmin,saveAdmin)
+apiUser.post('/admin',validateJwt,registerUser,signUpAdmin)
+apiUser.post('/admin',signUpClient)
 
-export default apiAdmin
+export default apiUser

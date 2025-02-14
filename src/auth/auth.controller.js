@@ -1,5 +1,5 @@
 
-import { comparePassword } from '../../utils/encrypt.js';
+import { comparePassword, encrypt } from '../../utils/encrypt.js';
 import { generateJwt } from '../../utils/jwt.js';
 import User from '../user/user.model.js';
 
@@ -31,5 +31,28 @@ export const login = async (request, response) => {
         response.status(200).send({ success: true, message: 'Login success',user: loginUser , token});
     } catch (error) {
         response.status(500).send({success:false,message:'General Server error',error})
+    }
+}
+
+export const adminDefault =async ()=>{
+    try {
+
+        let existAdminDefault = await User.findOne({name:'Admin por defecto'})
+        if(!existAdminDefault){
+            let admin = {
+                name:"Admin por defecto",
+                email:'admin@gmail.com',
+                password:'admin123@Ads',
+                state:"activo",
+                role:'admin'
+            }
+    
+            let newAdmin = User(admin)
+            newAdmin.password =await encrypt(admin.password)
+            newAdmin.save()
+        }
+
+    } catch (error) {
+        console.log(error)
     }
 }

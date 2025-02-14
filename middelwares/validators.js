@@ -19,7 +19,7 @@ export const registerCategory = [
     validateErrors
 ]
 
-export const registerAdmin = [
+export const registerUser = [
     body('name','Name of admin is required').notEmpty(),
     body('email','Email of admin is required').notEmpty(),
     body('password','Password of admin is required').notEmpty().isStrongPassword(),

@@ -19,8 +19,7 @@ const adminSchema = Schema({
     },
     role:{
         type:String,
-        enum:['admin'],
-        default:'admin'
+        enum:['admin','client'],
     }
 },
 {
@@ -28,4 +27,4 @@ const adminSchema = Schema({
     timestamps:true
 })
 
-export default model('Admin',adminSchema)
+export default model('Users',adminSchema)
