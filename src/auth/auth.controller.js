@@ -11,11 +11,14 @@ export const login = async (request, response) => {
         }
 
         let isValidUser = await Admin.findOne({email})
-        let isValidPassword = await comparePassword(isValidUser.password,password)
-        if(!isValidUser || !isValidPassword){
+        
+        if(!isValidUser){
             return response.status(400).send({ success: false, message: 'Invalid credentials' });
         }
-        console.log(isValidUser);
+        let isValidPassword = await comparePassword(isValidUser.password,password)
+        if(!isValidPassword){
+            return response.status(400).send({success:false,message:"Invalid Password"})
+        }
         let loginUser = {
             uid: isValidUser._id,
             username: isValidUser.email,

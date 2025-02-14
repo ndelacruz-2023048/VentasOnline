@@ -4,6 +4,9 @@ import Category from './category.model.js'
 export const getCategories = async (request,response)=>{
     try {
         let categories = await Category.find()
+        if(categories.length===0){
+            return response.status(400).send({success:false,message:'No categories yet.'})
+        }
         response.status(200).send({sucess:true,message:'Categories found',categories})
     } catch (error) {
         response.status(500).send({sucess:false,message:'General Server error',error})

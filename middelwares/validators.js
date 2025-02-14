@@ -26,3 +26,9 @@ export const registerAdmin = [
     body('state','Status of admin is required').notEmpty(),
     validateErrors
 ]
+
+export const signIn=[
+    body('email','Email is necessary').notEmpty(),
+    body('password','Password is necessary').notEmpty(),
+    validateErrors
+]
