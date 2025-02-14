@@ -1,5 +1,15 @@
+import { response } from 'express'
 import Category from '../category/category.model.js'
 import Product from '../products/product.model.js'
+
+export const getProducts = async(request,response)=>{
+    try {
+        let products = await Product.find()
+        response.status(200).send({success:true,message:'Products fetched succesfully',products})
+    } catch (error) {
+        response.status(500).send({success:false,message:'General Server error',error})
+    }
+}
 
 export const saveProducts =async (request,response)=>{
     try {
@@ -26,10 +36,11 @@ export const updateProducts = async(request,response)=>{
     }
 }
 
-export const deleteProduct = async()=>{
+export const deleteProduct = async(request,response)=>{
     try {
         let {id_product} = request.params
-        
+        let productDeleted = await Product.findByIdAndDelete(id_product)
+        response.status(200).send({success:true,message:'Product Deleted Succesfully',productDeleted})
     } catch (error) {
         response.status(500).send({success:false,message:'General Server error',error})
     }
