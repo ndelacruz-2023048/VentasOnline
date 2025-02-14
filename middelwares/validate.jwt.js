@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import Admin from '../src/admin/admin.model.js'
+import User from '../src/user/user.model.js'
 export const validateJwt =async (request, response, next) => {
     try {
         let secretKey = process.env.SECRET_KEY
@@ -10,7 +10,7 @@ export const validateJwt =async (request, response, next) => {
         }
 
         let userValid = jwt.verify(authorization,secretKey)
-        let isUserValid = await Admin.findOne({_id:userValid.uid})
+        let isUserValid = await User.findOne({_id:userValid.uid})
         if(!isUserValid){
             return response.status(401).send({success:false,message:'User not found'})
         }

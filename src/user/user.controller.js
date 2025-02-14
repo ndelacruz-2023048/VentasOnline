@@ -1,5 +1,5 @@
 import { encrypt } from "../../utils/encrypt.js"
-import Admin from "../admin/admin.model.js"
+import Admin from "./user.model.js"
 export const saveAdmin=async(request,response)=>{
     try {
         let data = request.body

@@ -1,7 +1,7 @@
 
 import { comparePassword } from '../../utils/encrypt.js';
 import { generateJwt } from '../../utils/jwt.js';
-import Admin from '../admin/admin.model.js';
+import User from '../user/user.model.js';
 
 export const login = async (request, response) => {
     try {
@@ -10,7 +10,7 @@ export const login = async (request, response) => {
             return response.status(400).send({ success: false, message: 'Email and password are required' });
         }
 
-        let isValidUser = await Admin.findOne({email})
+        let isValidUser = await User.findOne({email})
         
         if(!isValidUser){
             return response.status(400).send({ success: false, message: 'Invalid credentials' });

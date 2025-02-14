@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { saveAdmin } from "./admin.controller.js";
+import { saveAdmin } from "./user.controller.js";
 import { registerAdmin } from "../../middelwares/validators.js";
 
 let apiAdmin = Router()
