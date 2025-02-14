@@ -12,6 +12,18 @@ export const getCategories = async (request,response)=>{
         response.status(500).send({sucess:false,message:'General Server error',error})
     }
 }
+export const getCategoriesById = async (request,response)=>{
+    try {
+        let {id_category} = request.params
+        let categories = await Category.findOne({_id:id_category})
+        if(categories.length===0){
+            return response.status(400).send({success:false,message:'No categories yet.'})
+        }
+        response.status(200).send({sucess:true,message:'Categories found',categories})
+    } catch (error) {
+        response.status(500).send({sucess:false,message:'General Server error',error})
+    }
+}
 
 export const saveCategory = (request,response)=>{
     try {
