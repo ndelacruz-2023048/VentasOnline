@@ -3,7 +3,7 @@ import Product from '../products/product.model.js'
 
 export const getProducts = async(request,response)=>{
     try {
-        let products = await Product.find()
+        let products = await Product.find().populate('category')
         response.status(200).send({success:true,message:'Products fetched succesfully',products})
     } catch (error) {
         response.status(500).send({success:false,message:'General Server error',error})

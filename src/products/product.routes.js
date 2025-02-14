@@ -4,7 +4,7 @@ import { registerProduct } from "../../middelwares/validators.js";
 import { validateJwt } from "../../middelwares/validate.jwt.js";
 const apiController = Router()
 
-apiController.get('/product',getProducts)
+apiController.get('/product',validateJwt,getProducts)
 apiController.post('/product',validateJwt,registerProduct,saveProducts)
 apiController.put('/productUpdate/:id_product',validateJwt,updateProducts)
 apiController.delete('/productDelete/:id_product',validateJwt,deleteProduct)
