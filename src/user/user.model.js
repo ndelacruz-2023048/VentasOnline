@@ -3,19 +3,24 @@ import { model, Schema } from "mongoose";
 const adminSchema = Schema({
     name:{
         type:String,
-        required:[true,'Name of admin is required']
+        required:[true,'Name is required']
     },
     email:{
         type:String,
-        required:[true,'Email of admin is required']
+        required:[true,'Email is required']
+    },
+    username:{
+        type:String,
+        required:[true,'Username is required']
     },
     password:{
         type:String,
-        required:[true,'Password of admin is required']
+        required:[true,'Password is required']
     },
     state:{
         type:String,
         enum:['activo','inactivo'],
+        default:'activo'
     },
     role:{
         type:String,

@@ -21,17 +21,19 @@ export const registerCategory = [
 
 export const registerAdmin = [
     body('name','Name of admin is required').notEmpty(),
-    body('email','Email of admin is required').notEmpty(),
+    body('email','Email of admin is required').notEmpty().isEmail().withMessage('Invalid email'),
+    body('username','Username of admin is required').notEmpty(),
     body('password','Password of admin is required').notEmpty().isStrongPassword(),
-    body('state','Status of admin is required').notEmpty(),
-    body('role','Role of admin is required').notEmpty(),
+    body('state','Status of admin is required').notEmpty().isIn(['activo','inactivo']).withMessage('Invalid atribute in state'),
+    body('role','Role of admin is required').notEmpty().isIn(['admin','client']).withMessage('Invalid atribute in role'),
     validateErrors
 ]
 
 export const registerClient = [
-    body('name','Name of admin is required').notEmpty(),
-    body('email','Email of admin is required').notEmpty(),
-    body('password','Password of admin is required').notEmpty().isStrongPassword(),
+    body('name','Name of client is required').notEmpty(),
+    body('email','Email of client is required').notEmpty().isEmail().withMessage('Invalid email'),
+    body('username','Username of client is required').notEmpty(),
+    body('password','Password of client is required').notEmpty().isStrongPassword(),
     validateErrors
 ]
 
