@@ -72,6 +72,7 @@ export const deleteCategory = async(request,response)=>{
             element.save()
         })
         
+        
         response.status(200).send({sucess:true,message:'Category deleted succesfully',deletedCategory})
     } catch (error) {
         response.status(500).send({sucess:false,message:'General Server error',error})

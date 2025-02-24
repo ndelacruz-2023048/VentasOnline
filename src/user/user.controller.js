@@ -7,7 +7,6 @@ export const signUpAdmin = async(request,response)=>{
         if(dataAdmin.role !== 'admin') return response.status(401).send({sucess:false,message:'Only Administrator can register new users in this space'})
         
         let data = request.body
-        console.log(data)
         // data.password= await encrypt(data.password)
         // let newAdmin = new User(data)
         // await newAdmin.save()
