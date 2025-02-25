@@ -6,7 +6,7 @@ export const validateJwt =async (request, response, next) => {
         let {authorization}= request.headers
 
         if(!authorization){
-            return response.status(401).send({success:false,message:'Please login first'})
+            return response.status(401).send({success:false,message:'Please provide a token or login'})
         }
 
         try {

@@ -5,15 +5,11 @@ import User from '../user/user.model.js';
 
 export const login = async (request, response) => {
     try {
-        let { email, password } = request.body;
-        if (!email || !password) {
-            return response.status(400).send({ success: false, message: 'Email and password are required' });
-        }
-
-        let isValidUser = await User.findOne({email})
+        let { userLogin, password } = request.body;
+        let isValidUser = await User.findOne({$or:[{username:userLogin},{email:userLogin}]})
         
         if(!isValidUser){
-            return response.status(400).send({ success: false, message: 'Invalid credentials' });
+            return response.status(400).send({ success: false, message: 'Invalid username o email' });
         }
         let isValidPassword = await comparePassword(isValidUser.password,password)
         if(!isValidPassword){
@@ -21,7 +17,7 @@ export const login = async (request, response) => {
         }
         let loginUser = {
             uid: isValidUser._id,
-            username: isValidUser.email,
+            username: isValidUser.username,
             name: isValidUser.name,
             role: isValidUser.role
         }

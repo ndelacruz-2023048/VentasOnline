@@ -37,8 +37,19 @@ export const registerClient = [
     validateErrors
 ]
 
+export const validateUpdateProfileAsAdmin = [
+    body('name','Name of admin is required').optional().notEmpty(),
+    body('email','Email of admin is required').optional().notEmpty().isEmail().withMessage('Invalid email'),
+    body('username','Username of admin is required').optional().notEmpty(),
+    body('state','Status of admin is required').optional().notEmpty().isIn(['activo','inactivo']).withMessage('Invalid atribute in state'),
+    body('role','Role of admin is required').optional().notEmpty().isIn(['admin','client']).withMessage('Invalid atribute in role'),
+    body('passwordAdmin','Password of admin is required').notEmpty(),
+    body('newPasswordUser','The new password of the user to update is required').optional().notEmpty().isStrongPassword().withMessage('Is not a strong password'),
+    validateErrors
+]
+
 export const signIn=[
-    body('email','Email is necessary').notEmpty(),
+    body('userLogin','UserLogin is necessary').notEmpty(),
     body('password','Password is necessary').notEmpty(),
     validateErrors
 ]
