@@ -10,6 +10,6 @@ apiUser.post('/admin',validateJwt,registerAdmin,signUpAdmin)
 apiUser.post('/client',registerClient,signUpClient)
 apiUser.put('/admin_update/:idUserToUpdate',validateJwt,validateObjectId,validateAuthenticUser,validateUpdateProfileAsAdmin,updateProfileAsAdmin)
 
-apiUser.put('/client_update/:idUserToUpdate',validateJwt,validateObjectId,validateAuthenticUser,validateUpdateProfileAsClient,updateProfileAsClient)
+apiUser.put('/client_update',validateJwt,validateUpdateProfileAsClient,updateProfileAsClient)
 
 export default apiUser

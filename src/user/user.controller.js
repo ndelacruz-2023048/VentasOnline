@@ -99,7 +99,25 @@ export const updateProfileAsAdmin =async (request,response)=>{
 
 export const updateProfileAsClient =async (request,response)=>{
     try {
+        const data = request.body
+        const {uid} = request.user
 
+        //Verificamos que el usuario sea administrador
+        const {role,password} = await User.findOne({_id:uid})
+        const {passwordUser,newPasswordUser,email,username} = data
+
+        //Verificamos que la contraseña del cliente sea correcta
+        const isValidPasswordAdmin = await comparePassword(password,passwordUser)
+        if(!isValidPasswordAdmin){
+            return response.status(400).send({sucess:false,message:'Invalid password Client'})
+        }
+
+        //Encriptamos la nueva contraseña
+        if(newPasswordUser){
+            let newPasswordUserEncrypted = await encrypt(newPasswordUser)
+            await User.findByIdAndUpdate(uid,{...data,password:newPasswordUserEncrypted})
+        }
+        await User.findByIdAndUpdate(uid,data)
         response.status(200).send({sucess:true,message:'Profile updated'})
     } catch (error) {
         response.status(500).send({ sucess: false, message: 'General Server error', error })

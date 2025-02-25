@@ -22,7 +22,7 @@ export const registerCategory = [
 export const registerAdmin = [
     body('name','Name of admin is required').notEmpty(),
     body('email','Email of admin is required').notEmpty().isEmail().withMessage('Invalid email'),
-    body('username','Username of admin is required').notEmpty(),
+    body('username','Username of admin is required').notEmpty().toLowerCase(),
     body('password','Password of admin is required').notEmpty().isStrongPassword(),
     body('state','Status of admin is required').notEmpty().isIn(['activo','inactivo']).withMessage('Invalid atribute in state'),
     body('role','Role of admin is required').notEmpty().isIn(['admin','client']).withMessage('Invalid atribute in role'),
@@ -32,7 +32,7 @@ export const registerAdmin = [
 export const registerClient = [
     body('name','Name of client is required').notEmpty(),
     body('email','Email of client is required').notEmpty().isEmail().withMessage('Invalid email'),
-    body('username','Username of client is required').notEmpty(),
+    body('username','Username of client is required').notEmpty().toLowerCase(),
     body('password','Password of client is required').notEmpty().isStrongPassword(),
     validateErrors
 ]
@@ -40,7 +40,7 @@ export const registerClient = [
 export const validateUpdateProfileAsAdmin = [
     body('name','Name of admin is required').optional().notEmpty(),
     body('email','Email of admin is required').optional().notEmpty().isEmail().withMessage('Invalid email').custom((data,{req})=>validateSameEmail(data,req)).custom((data,{req})=>validateDuplicatedEmail(data,req)),
-    body('username','Username of admin is required').optional().notEmpty().custom((data,{req})=>validateSameUsername(data,req)).custom((data,{req})=>validateDuplicatedUsername(data,req)),
+    body('username','Username of admin is required').optional().toLowerCase().notEmpty().custom((data,{req})=>validateSameUsername(data,req)).custom((data,{req})=>validateDuplicatedUsername(data,req)),
     body('state','Status of admin is required').optional().notEmpty().isIn(['activo','inactivo']).withMessage('Invalid atribute in state'),
     body('role','Role of admin is required').optional().notEmpty().isIn(['admin','client']).withMessage('Invalid atribute in role'),
     body('passwordAdmin','Password of admin is required').notEmpty(),
@@ -49,10 +49,9 @@ export const validateUpdateProfileAsAdmin = [
 ]
 
 export const validateUpdateProfileAsClient = [
-    //Los campos que se pueden actualizar son name, email, username y password solamente
     body('name','Name of client is required').optional().notEmpty(),
     body('email','Email of client is required').optional().notEmpty().isEmail().withMessage('Invalid email').custom((data,{req})=>validateSameEmail(data,req)).custom((data,{req})=>validateDuplicatedEmail(data,req)),
-    body('username','Username of client is required').optional().notEmpty().custom((data,{req})=>validateSameUsername(data,req)).custom((data,{req})=>validateDuplicatedUsername(data,req)),
+    body('username','Username of client is required').optional().toLowerCase().notEmpty().toLowerCase().custom((data,{req})=>validateSameUsername(data,req)).custom((data,{req})=>validateDuplicatedUsername(data,req)),
     body('passwordUser','Password of client is required').notEmpty(),
     body('newPasswordUser','The new password of the user to update is required').optional().notEmpty().isStrongPassword().withMessage('Is not a strong password'),
     validateErrors

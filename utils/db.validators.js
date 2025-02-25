@@ -10,9 +10,10 @@ export const validationObjectId = (objectId) => {
 
 export const validateSameEmail = async (data, request) => {
     const { idUserToUpdate } = request.params
+    let idUser = idUserToUpdate ??  request.user.uid
     const dataBody = request.body
     const { passwordAdmin, newPasswordUser, email, username } = dataBody
-    const isAuthenticIdUser = await User.findOne({ _id: idUserToUpdate })
+    const isAuthenticIdUser = await User.findOne({ _id: idUser })
     if (isAuthenticIdUser.email === email) {
         throw new Error('Your email is the same , provide a new email or remove this field')
     }
@@ -20,9 +21,10 @@ export const validateSameEmail = async (data, request) => {
 }
 export const validateSameUsername = async (data, request) => {
     const { idUserToUpdate } = request.params
+    let idUser = idUserToUpdate ??  request.user.uid
     const dataBody = request.body
     const { passwordAdmin, newPasswordUser, email, username } = dataBody
-    const isAuthenticIdUser = await User.findOne({ _id: idUserToUpdate })
+    const isAuthenticIdUser = await User.findOne({ _id: idUser })
     if (isAuthenticIdUser.username === username) {
         throw new Error('Your username is the same , provide a new username or remove this field')
     }
@@ -31,9 +33,10 @@ export const validateSameUsername = async (data, request) => {
 
 export const validateDuplicatedEmail = async (data, request) => {
     const { idUserToUpdate } = request.params
+    let idUser = idUserToUpdate ??  request.user.uid
     const dataBody = request.body
     const { passwordAdmin, newPasswordUser, email, username } = dataBody
-    const isDuplicatedEmail = await User.findOne({ _id: { $ne: idUserToUpdate }, email })
+    const isDuplicatedEmail = await User.findOne({ _id: { $ne: idUser }, email })
     if (isDuplicatedEmail) {
         throw new Error('Email already exists')
     }
@@ -42,9 +45,10 @@ export const validateDuplicatedEmail = async (data, request) => {
 
 export const validateDuplicatedUsername = async (data, request) => {
     const { idUserToUpdate } = request.params
+    let idUser = idUserToUpdate ??  request.user.uid
     const dataBody = request.body
     const { passwordAdmin, newPasswordUser, email, username } = dataBody
-    const isDuplicatedUsername = await User.findOne({ _id: { $ne: idUserToUpdate }, username })
+    const isDuplicatedUsername = await User.findOne({ _id: { $ne: idUser }, username })
     if (isDuplicatedUsername) {
         throw new Error('Username already exists' )
     }

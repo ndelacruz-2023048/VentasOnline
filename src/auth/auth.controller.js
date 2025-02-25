@@ -38,7 +38,7 @@ export const adminDefault =async ()=>{
             let admin = {
                 name:"Admin por defecto",
                 email:'admin@gmail.com',
-                username:'adminDefault',
+                username:'admindefault',
                 password:'admin123@Ads',
                 state:"activo",
                 role:'admin'
