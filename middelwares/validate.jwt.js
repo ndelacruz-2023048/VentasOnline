@@ -6,16 +6,21 @@ export const validateJwt =async (request, response, next) => {
         let {authorization}= request.headers
 
         if(!authorization){
-            return response.status(401).send({success:false,message:'Please provide token'})
+            return response.status(401).send({success:false,message:'Please login first'})
         }
 
-        let userValid = jwt.verify(authorization,secretKey)
-        let isUserValid = await User.findOne({_id:userValid.uid})
-        if(!isUserValid){
-            return response.status(401).send({success:false,message:'User not found'})
+        try {
+            let userValid = jwt.verify(authorization,secretKey)
+            let isUserValid = await User.findOne({_id:userValid.uid})
+            if(!isUserValid){
+                return response.status(401).send({success:false,message:'User not found provide another token'})
+            }
+            request.user = userValid
+            next()
+        } catch (error) {
+            request.status(401).send({success:false,message:'Invalid token'})
         }
-        request.user = userValid
-        next()
+
     } catch (error) {
         response.status(500).send({success:true,message:'Error in validating token',error})
     }
