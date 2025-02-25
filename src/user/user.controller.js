@@ -66,7 +66,6 @@ export const updateProfileAsAdmin =async (request,response)=>{
     try {
         const {idUserToUpdate} = request.params
         const {uid} = request.user
-        console.log("🚀 ~ updateProfileAsAdmin ~ request.user:", request.user)
         
         //Verificamos que el usuario sea administrador
         const {role,password} = await User.findOne({_id:uid})
@@ -75,38 +74,8 @@ export const updateProfileAsAdmin =async (request,response)=>{
 
         }
 
-        //Verificamos que el id sea un ObjectId
-        if(!isValidObjectId(idUserToUpdate)){
-            return response.status(400).send({sucess:false,message:'Invalid Object id'})
-        }
-
-        //Verificamos que el id corresponda a un usuario
-        const isAuthenticIdUser = await User.findOne({_id:idUserToUpdate})
-        if(!isAuthenticIdUser){
-            return response.status(400).send({sucess:false,message:'User Id not found'})
-        }
-        
-        //--------------------------
         const data = request.body
         const {passwordAdmin,newPasswordUser,email,username} = data
-        
-        if(isAuthenticIdUser.email === email){
-            return response.status(400).send({sucess:false,message:'Your email is the same , provide a new email or remove this field'})
-        }
-        if(isAuthenticIdUser.username === username){
-            return response.status(400).send({sucess:false,message:'Your username is the same , provide a new username or remove this field'})
-        }
-        
-        //Verificamos que el email no sea duplicado
-        const isDuplicatedEmail = await User.findOne({_id:{$ne:idUserToUpdate},email})
-        if(isDuplicatedEmail){
-            return response.status(400).send({sucess:false,message:'Email already exists'})
-        }
-        //Verificamos que el username no sea duplicado
-        const isDuplicatedUsername = await User.findOne({_id:{$ne:idUserToUpdate},username})
-        if(isDuplicatedUsername){
-            return response.status(400).send({sucess:false,message:'Username already exists'})
-        }
 
         //Verificamos que la contraseña del admin sea correcta
         const isValidPasswordAdmin = await comparePassword(password,passwordAdmin)
@@ -116,13 +85,21 @@ export const updateProfileAsAdmin =async (request,response)=>{
         }
 
         //Encriptamos la nueva contraseña
-        // const userUpdated = new User(data)
-        // userUpdated.password = await encrypt(newPasswordUser)
         if(newPasswordUser){
             let newPasswordUserEncrypted = await encrypt(newPasswordUser)
             await User.findByIdAndUpdate(idUserToUpdate,{...data,password:newPasswordUserEncrypted})
         }
+
         await User.findByIdAndUpdate(idUserToUpdate,data)
+        response.status(200).send({sucess:true,message:'Profile updated'})
+    } catch (error) {
+        response.status(500).send({ sucess: false, message: 'General Server error', error })
+    }
+}
+
+export const updateProfileAsClient =async (request,response)=>{
+    try {
+
         response.status(200).send({sucess:true,message:'Profile updated'})
     } catch (error) {
         response.status(500).send({ sucess: false, message: 'General Server error', error })

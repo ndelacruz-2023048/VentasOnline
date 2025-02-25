@@ -1,6 +1,6 @@
 import { body } from "express-validator";
 import { validateErrors } from "./validate.errors.js";
-import { validationObjectId } from "../utils/db.validators.js";
+import { validateSameEmail, validationObjectId,validateSameUsername, validateDuplicatedEmail, validateDuplicatedUsername } from "../utils/db.validators.js";
 
 export const registerProduct = [
     body('name','Name of products is required').notEmpty(),
@@ -39,8 +39,8 @@ export const registerClient = [
 
 export const validateUpdateProfileAsAdmin = [
     body('name','Name of admin is required').optional().notEmpty(),
-    body('email','Email of admin is required').optional().notEmpty().isEmail().withMessage('Invalid email'),
-    body('username','Username of admin is required').optional().notEmpty(),
+    body('email','Email of admin is required').optional().notEmpty().isEmail().withMessage('Invalid email').custom((data,{req})=>validateSameEmail(data,req)).custom((data,{req})=>validateDuplicatedEmail(data,req)),
+    body('username','Username of admin is required').optional().notEmpty().custom((data,{req})=>validateSameUsername(data,req)).custom((data,{req})=>validateDuplicatedUsername(data,req)),
     body('state','Status of admin is required').optional().notEmpty().isIn(['activo','inactivo']).withMessage('Invalid atribute in state'),
     body('role','Role of admin is required').optional().notEmpty().isIn(['admin','client']).withMessage('Invalid atribute in role'),
     body('passwordAdmin','Password of admin is required').notEmpty(),
@@ -48,8 +48,19 @@ export const validateUpdateProfileAsAdmin = [
     validateErrors
 ]
 
+export const validateUpdateProfileAsClient = [
+    //Los campos que se pueden actualizar son name, email, username y password solamente
+    body('name','Name of client is required').optional().notEmpty(),
+    body('email','Email of client is required').optional().notEmpty().isEmail().withMessage('Invalid email').custom((data,{req})=>validateSameEmail(data,req)).custom((data,{req})=>validateDuplicatedEmail(data,req)),
+    body('username','Username of client is required').optional().notEmpty().custom((data,{req})=>validateSameUsername(data,req)).custom((data,{req})=>validateDuplicatedUsername(data,req)),
+    body('passwordUser','Password of client is required').notEmpty(),
+    body('newPasswordUser','The new password of the user to update is required').optional().notEmpty().isStrongPassword().withMessage('Is not a strong password'),
+    validateErrors
+]   
+
 export const signIn=[
     body('userLogin','UserLogin is necessary').notEmpty(),
     body('password','Password is necessary').notEmpty(),
     validateErrors
 ]
+
