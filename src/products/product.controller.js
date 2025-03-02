@@ -100,10 +100,6 @@ export const getProductsByCategory = async(request,response)=>{
 export const getProductsByName = async(request,response)=>{
     try {
         const {product_name} = request.query
-        console.log(product_name);
-        
-        
-        
         const product = await Product.find({name:{$regex:product_name,$options:'i'}})
         if(product.length===0){
             return response.status(400).send({success:false,message:"Not products founded"})
