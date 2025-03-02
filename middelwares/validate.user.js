@@ -17,3 +17,14 @@ export const validateObjectId = (request, response, next) => {
     }
     next()
 }
+
+export const validateCredentialsAsAdmin = async (request, response, next) => {
+    const {uid} = request.user
+    console.log("🚀 ~ validateCredentialsAdmin ~ uid:", uid)
+    const isAdmin = await User.findOne({_id:uid,role:'admin'})
+    if(!isAdmin){
+        return response.status(401).send({sucess:false
+            ,message:'Only Administrators are authorized'})
+    }
+    next()
+}

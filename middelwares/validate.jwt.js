@@ -18,7 +18,10 @@ export const validateJwt =async (request, response, next) => {
             request.user = userValid
             next()
         } catch (error) {
-            request.status(401).send({success:false,message:'Invalid token'})
+            if(error.name=== 'TokenExpiredError'){
+                return response.status(401).send({success:false,message:'Token expired, please login again'})
+            }
+            response.status(401).send({success:false,message:'Invalid token'})
         }
 
     } catch (error) {
