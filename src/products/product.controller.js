@@ -79,3 +79,37 @@ export const deleteProduct = async(request,response)=>{
         response.status(500).send({success:false,message:'General Server error',error})
     }
 }
+
+export const getProductsByCategory = async(request,response)=>{
+    try {
+        const {id_category} = request.params
+
+        const category = await Category.findById(id_category)
+        if(!category){
+            return response.status(400).send({success:false,message:'Category Id not found'})
+        }
+
+        const products = await Product.find({category:id_category})
+
+        response.status(200).send({success:true,message:'Products fetched succesfully',products})
+    } catch (error) {
+        response.status(500).send({success:false,message:'General Server error',error})
+    }
+}
+
+export const getProductsByName = async(request,response)=>{
+    try {
+        const {product_name} = request.query
+        console.log(product_name);
+        
+        
+        
+        const product = await Product.find({name:{$regex:product_name,$options:'i'}})
+        if(product.length===0){
+            return response.status(400).send({success:false,message:"Not products founded"})
+        }
+        response.status(200).send({success:true,message:'Products fetched succesfully',product})
+    } catch (error) {
+        response.status(500).send({success:false,message:'General Server error',error})
+    }
+}

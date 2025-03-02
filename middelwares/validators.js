@@ -1,4 +1,4 @@
-import { body } from "express-validator";
+import { body, header, param, query } from "express-validator";
 import { validateErrors } from "./validate.errors.js";
 import { validateSameEmail, validationObjectId,validateSameUsername, validateDuplicatedEmail, validateDuplicatedUsername } from "../utils/db.validators.js";
 
@@ -63,3 +63,12 @@ export const signIn=[
     validateErrors
 ]
 
+export const validateFilterProductsByCategory = [
+    param('id_category','Category of product is required').notEmpty().isMongoId(),
+    validateErrors
+]
+
+export const validateFilterProductName =[
+    query('product_name','Is required').notEmpty().withMessage('Product name cannot be empty'),
+    validateErrors
+]
