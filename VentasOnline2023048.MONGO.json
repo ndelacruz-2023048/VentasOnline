@@ -1,0 +1,699 @@
+[{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf319"
+  },
+  "name": "Bolígrafo de tinta negra, resiste tres mordidas",
+  "price": 10.5,
+  "discountedPrice": 5,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf314"
+  },
+  "size": "10cm",
+  "createdAt": "2025-03-01T12:00:35.733+00:00",
+  "updatedAt": {
+    "$date": "2025-03-03T15:40:22.986Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 0
+    },
+    {
+      "userId": {
+        "$oid": "67c5b5b385c417d5161a9c23"
+      },
+      "stock": 0,
+      "_id": {
+        "$oid": "67c5c55991fa188e6f0b8461"
+      }
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf31a"
+  },
+  "name": "Marcador de punta fina, colores surtidos",
+  "price": 8.99,
+  "discountedPrice": 4.5,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf314"
+  },
+  "size": "15cm",
+  "createdAt": "2025-03-02T09:15:20.123+00:00",
+  "updatedAt": {
+    "$date": "2025-03-03T15:11:25.057Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 18
+    },
+    {
+      "userId": {
+        "$oid": "67c5b5b385c417d5161a9c23"
+      },
+      "stock": 8,
+      "_id": {
+        "$oid": "67c5c55991fa188e6f0b8467"
+      }
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf31b"
+  },
+  "name": "Cuaderno de tapa dura, 100 hojas",
+  "price": 15.75,
+  "discountedPrice": 12,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf317"
+  },
+  "size": "21cm",
+  "createdAt": "2025-03-03T14:30:45.678+00:00",
+  "updatedAt": {
+    "$date": "2025-03-03T15:11:25.059Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 26
+    },
+    {
+      "userId": {
+        "$oid": "67c5b5b385c417d5161a9c23"
+      },
+      "stock": 24,
+      "_id": {
+        "$oid": "67c5c55991fa188e6f0b846d"
+      }
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf31c"
+  },
+  "name": "Lápiz mecánico 0.5mm, recargable",
+  "price": 6.25,
+  "discountedPrice": 3.5,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf314"
+  },
+  "size": "12cm",
+  "createdAt": "2025-03-04T08:45:10.234+00:00",
+  "updatedAt": {
+    "$date": "2025-03-03T15:11:25.060Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 25
+    },
+    {
+      "userId": {
+        "$oid": "67c5b5b385c417d5161a9c23"
+      },
+      "stock": 22,
+      "_id": {
+        "$oid": "67c5c55991fa188e6f0b8473"
+      }
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf31d"
+  },
+  "name": "Borrador ergonómico, suave al tacto",
+  "price": 2.99,
+  "discountedPrice": 1.5,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf314"
+  },
+  "size": "5cm",
+  "createdAt": "2025-03-05T11:20:55.890+00:00",
+  "updatedAt": {
+    "$date": "2025-03-03T11:55:26.743Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf31e"
+  },
+  "name": "Regla de plástico, 30cm",
+  "price": 3.5,
+  "discountedPrice": 2,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf315"
+  },
+  "size": "30cm",
+  "createdAt": "2025-03-06T13:10:30.456+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:33:50.606Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf31f"
+  },
+  "name": "Tijeras de punta redonda",
+  "price": 7.8,
+  "discountedPrice": 4,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf313"
+  },
+  "size": "18cm",
+  "createdAt": "2025-03-07T10:25:15.321+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:34:09.338Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf320"
+  },
+  "name": "Calculadora científica, 10 dígitos",
+  "price": 25,
+  "discountedPrice": 20,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf316"
+  },
+  "size": "14cm",
+  "createdAt": "2025-03-08T15:40:50.789+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:34:25.316Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf321"
+  },
+  "name": "Carpeta de archivo, color azul",
+  "price": 5.25,
+  "discountedPrice": 3,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf315"
+  },
+  "size": "25cm",
+  "createdAt": "2025-03-09T09:55:25.654+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:34:36.532Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf322"
+  },
+  "name": "Corrector líquido, 10ml",
+  "price": 4.5,
+  "discountedPrice": 2.25,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf314"
+  },
+  "size": "8cm",
+  "createdAt": "2025-03-10T12:30:10.987+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:34:53.821Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf323"
+  },
+  "name": "Agenda 2025, diseño minimalista",
+  "price": 12.99,
+  "discountedPrice": 9.5,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf315"
+  },
+  "size": "20cm",
+  "createdAt": "2025-03-11T14:15:40.234+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:35:09.418Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf324"
+  },
+  "name": "Bolígrafo gel, punta 0.7mm",
+  "price": 9.75,
+  "discountedPrice": 5.5,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf314"
+  },
+  "size": "11cm",
+  "createdAt": "2025-03-12T08:20:15.678+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:35:39.955Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf325"
+  },
+  "name": "Set de geometría, 4 piezas",
+  "price": 6.8,
+  "discountedPrice": 3.75,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf315"
+  },
+  "size": "16cm",
+  "createdAt": "2025-03-13T10:35:50.123+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:35:52.233Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf326"
+  },
+  "name": "Libreta de notas, 50 hojas",
+  "price": 3.99,
+  "discountedPrice": 2,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf315"
+  },
+  "size": "15cm",
+  "createdAt": "2025-03-14T13:50:25.456+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:36:02.716Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf327"
+  },
+  "name": "Marcador permanente, negro",
+  "price": 5.5,
+  "discountedPrice": 2.75,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf314"
+  },
+  "size": "13cm",
+  "createdAt": "2025-03-15T09:10:40.789+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:36:16.192Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf328"
+  },
+  "name": "Tinta para bolígrafo, 20ml",
+  "price": 4.25,
+  "discountedPrice": 2.1,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf314"
+  },
+  "size": "7cm",
+  "createdAt": "2025-03-16T11:25:15.321+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:36:22.658Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf329"
+  },
+  "name": "Carpeta elástica, color rojo",
+  "price": 6,
+  "discountedPrice": 3.5,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf315"
+  },
+  "size": "24cm",
+  "createdAt": "2025-03-17T14:40:50.654+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:36:39.746Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf32a"
+  },
+  "name": "Sacapuntas metálico, doble filo",
+  "price": 3.75,
+  "discountedPrice": 1.8,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf317"
+  },
+  "size": "6cm",
+  "createdAt": "2025-03-18T08:55:25.987+00:00",
+  "updatedAt": {
+    "$date": "2025-03-03T15:40:22.993Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 26
+    },
+    {
+      "userId": {
+        "$oid": "67c5b5b385c417d5161a9c23"
+      },
+      "stock": 18,
+      "_id": {
+        "$oid": "67c5cd611c78cb7399850496"
+      }
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf32b"
+  },
+  "name": "Bolígrafo retráctil, azul",
+  "price": 7.25,
+  "discountedPrice": 4,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf314"
+  },
+  "size": "10cm",
+  "createdAt": "2025-03-19T12:10:10.234+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:37:17.929Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf32c"
+  },
+  "name": "Cuaderno de dibujo, 80 hojas",
+  "price": 14.5,
+  "discountedPrice": 10,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf313"
+  },
+  "size": "22cm",
+  "createdAt": "2025-03-20T15:25:40.678+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:37:39.104Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf32d"
+  },
+  "name": "Lápiz de color, set de 12",
+  "price": 8,
+  "discountedPrice": 4.5,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf314"
+  },
+  "size": "17cm",
+  "createdAt": "2025-03-21T09:40:15.123+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:37:52.716Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf32e"
+  },
+  "name": "Pegamento en barra, 40g",
+  "price": 2.5,
+  "discountedPrice": 1.25,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf317"
+  },
+  "size": "9cm",
+  "createdAt": "2025-03-22T13:55:50.456+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:38:11.472Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf32f"
+  },
+  "name": "Cinta adhesiva, 15mm x 10m",
+  "price": 3.25,
+  "discountedPrice": 1.75,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf315"
+  },
+  "size": "10cm",
+  "createdAt": "2025-03-23T10:10:25.789+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:38:22.241Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf330"
+  },
+  "name": "Portaminas 0.9mm, negro",
+  "price": 5.99,
+  "discountedPrice": 3,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf315"
+  },
+  "size": "13cm",
+  "createdAt": "2025-03-24T14:25:40.321+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:38:32.633Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c3d3783ce3dbc2218cf331"
+  },
+  "name": "Block de notas adhesivas, 3x3\"",
+  "price": 4.75,
+  "discountedPrice": 0,
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf317"
+  },
+  "size": "8cm",
+  "createdAt": "2025-03-25T08:40:15.654+00:00",
+  "updatedAt": {
+    "$date": "2025-03-02T04:38:42.173Z"
+  },
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "stock": 28
+},
+{
+  "_id": {
+    "$oid": "67c5a55003c3d85814899bf4"
+  },
+  "name": "PRODUCTO NUEVO",
+  "description": "Boligrafo de tinta negra, no resiste tres mordidas",
+  "price": {
+    "$numberDecimal": "10.50"
+  },
+  "stock": 15,
+  "reservedStock": [
+    {
+      "userId": {
+        "$oid": "67bdaad34e8e0028bd33e9f8"
+      },
+      "stock": 28
+    }
+  ],
+  "category": {
+    "$oid": "67c3d2cb3ce3dbc2218cf315"
+  },
+  "size": "10cm",
+  "createdAt": {
+    "$date": "2025-03-03T12:49:20.467Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-03T12:49:20.467Z"
+  }
+}]

@@ -7,335 +7,707 @@
 	},
 	"item": [
 		{
-			"name": "Product",
+			"name": "SectionAdmin",
 			"item": [
 				{
-					"name": "NewProduct",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2FmMDBhNTc1ZTdmNGJjZTQ2MGIxOGUiLCJ1c2VybmFtZSI6ImRhdmlkQGtpbmFsLmVkdS5ndCIsIm5hbWUiOiJEYXZpZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTUyNDEzOSwiZXhwIjoxNzM5NTM0OTM5fQ.L3_cOHUZ8OV1Anxabq6nBKqNIUE_poxcTfVKsQdvmfw",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Boligrafo BIC",
-									"type": "text"
+					"name": "Product",
+					"item": [
+						{
+							"name": "NewProduct",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "PRODUCTO ",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Boligrafo de tinta negra, no resiste tres mordidas",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "10.50",
+											"type": "text"
+										},
+										{
+											"key": "discountedPrice",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "stock",
+											"value": "15",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "67c3d2cb3ce3dbc2218cf315",
+											"type": "text"
+										},
+										{
+											"key": "size",
+											"value": "10cm",
+											"type": "text"
+										}
+									]
 								},
-								{
-									"key": "description",
-									"value": "Boligrafo de tinta negrea, no resiste tres mordidas",
-									"type": "text"
-								},
-								{
-									"key": "price",
-									"value": "10.50",
-									"type": "text"
-								},
-								{
-									"key": "discountedPrice",
-									"value": "5",
-									"type": "text"
-								},
-								{
-									"key": "stock",
-									"value": "15",
-									"type": "text"
-								},
-								{
-									"key": "category",
-									"value": "67aec05c09d81e61bc0b3309",
-									"type": "text"
-								},
-								{
-									"key": "size",
-									"value": "10cm",
-									"type": "text"
+								"url": {
+									"raw": "http://localhost:2636/v1/user/product_save",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"product_save"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "http://localhost:2636/product",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "2636",
-							"path": [
-								"product"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "New Request",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2FmMDBhNTc1ZTdmNGJjZTQ2MGIxOGUiLCJ1c2VybmFtZSI6ImRhdmlkQGtpbmFsLmVkdS5ndCIsIm5hbWUiOiJEYXZpZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTUyNDEzOSwiZXhwIjoxNzM5NTM0OTM5fQ.L3_cOHUZ8OV1Anxabq6nBKqNIUE_poxcTfVKsQdvmfw",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Sacabocados",
-									"type": "text"
+						{
+							"name": "UpdateProduct",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Sacabocados",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "Sacabocados para crear perforaciones de un agujero",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "price",
+											"value": "25.35",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "discountedPrice",
+											"value": "22.20",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "stock",
+											"value": "10",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "category",
+											"value": "67c3d2cb3ce3dbc2218cf317",
+											"type": "text"
+										},
+										{
+											"key": "size",
+											"value": "20cm",
+											"type": "text",
+											"disabled": true
+										}
+									]
 								},
-								{
-									"key": "description",
-									"value": "Sacabocados para crear perforaciones de un agujero",
-									"type": "text"
-								},
-								{
-									"key": "price",
-									"value": "25.35",
-									"type": "text"
-								},
-								{
-									"key": "discountedPrice",
-									"value": "22.20",
-									"type": "text"
-								},
-								{
-									"key": "stock",
-									"value": "10",
-									"type": "text"
-								},
-								{
-									"key": "category",
-									"value": "67aed57cf766afd6a0f7990f",
-									"type": "text"
-								},
-								{
-									"key": "size",
-									"value": "20cm",
-									"type": "text"
+								"url": {
+									"raw": "http://localhost:2636/v1/user/product_update/67c3d3783ce3dbc2218cf331",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"product_update",
+										"67c3d3783ce3dbc2218cf331"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "http://localhost:2636/productUpdate/67af09e3efb45958ea04dcc1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "2636",
-							"path": [
-								"productUpdate",
-								"67af09e3efb45958ea04dcc1"
-							]
+						{
+							"name": "DeleteProduct",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/product_delete/67afaa38bad295630acc0fa8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"product_delete",
+										"67afaa38bad295630acc0fa8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetProducts",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:2636/v1/user/product",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetProductById",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:2636/v1/user/productById/67c38383857411a8ecd01b54",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"productById",
+										"67c38383857411a8ecd01b54"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetProductsByCategory",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:2636/v1/user/product_filter_category/67c3d3783ce3dbc2218cf330",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"product_filter_category",
+										"67c3d3783ce3dbc2218cf330"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetProductsByName",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:2636/v1/user/product_filter_name?product_name=cuaderno",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"product_filter_name"
+									],
+									"query": [
+										{
+											"key": "product_name",
+											"value": "cuaderno"
+										}
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "DeleteProduct",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2FmMDBhNTc1ZTdmNGJjZTQ2MGIxOGUiLCJ1c2VybmFtZSI6ImRhdmlkQGtpbmFsLmVkdS5ndCIsIm5hbWUiOiJEYXZpZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTUyNDEzOSwiZXhwIjoxNzM5NTM0OTM5fQ.L3_cOHUZ8OV1Anxabq6nBKqNIUE_poxcTfVKsQdvmfw",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": []
+					"name": "Category",
+					"item": [
+						{
+							"name": "New Category",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "nameCategory",
+											"value": "Utiles Escolares",
+											"type": "text"
+										},
+										{
+											"key": "descriptionCategory",
+											"value": "De todo para el regreso a clases",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/category_save",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"category_save"
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "http://localhost:2636/productDelete/67af0ce338d3ceb04986009b",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "2636",
-							"path": [
-								"productDelete",
-								"67af0ce338d3ceb04986009b"
-							]
+						{
+							"name": "UpdateCategory",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "nameCategory",
+											"value": "Decoracion",
+											"type": "text"
+										},
+										{
+											"key": "descriptionCategory",
+											"value": "Productos de limpieza para el hogar",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/category_update/67c38476857411a8ecd01b74",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"category_update",
+										"67c38476857411a8ecd01b74"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteCategory",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/category_delete/67c383a8857411a8ecd01b64",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"category_delete",
+										"67c383a8857411a8ecd01b64"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetCategories",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/category",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CategoryById",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/categoryById/67afa9a7bad295630acc0f92",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"categoryById",
+										"67afa9a7bad295630acc0f92"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "GetProducts",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2FmMDBhNTc1ZTdmNGJjZTQ2MGIxOGUiLCJ1c2VybmFtZSI6ImRhdmlkQGtpbmFsLmVkdS5ndCIsIm5hbWUiOiJEYXZpZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTUyNDEzOSwiZXhwIjoxNzM5NTM0OTM5fQ.L3_cOHUZ8OV1Anxabq6nBKqNIUE_poxcTfVKsQdvmfw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:2636/product",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "2636",
-							"path": [
-								"product"
-							]
-						}
-					},
-					"response": []
+					]
 				}
 			]
 		},
 		{
-			"name": "Category",
+			"name": "SectionClient",
 			"item": [
 				{
-					"name": "New Category",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "nameCategory",
-									"value": "Utiles Escolares",
-									"type": "text"
-								},
-								{
-									"key": "descriptionCategory",
-									"value": "De todo para el regreso a clases",
-									"type": "text"
+					"name": "Product",
+					"item": [
+						{
+							"name": "GetProducts",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:2636/v1/user/product",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"product"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "http://localhost:2636/category",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "2636",
-							"path": [
-								"category"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "UpdateCategory",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2FmMDBhNTc1ZTdmNGJjZTQ2MGIxOGUiLCJ1c2VybmFtZSI6ImRhdmlkQGtpbmFsLmVkdS5ndCIsIm5hbWUiOiJEYXZpZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTUyNDEzOSwiZXhwIjoxNzM5NTM0OTM5fQ.L3_cOHUZ8OV1Anxabq6nBKqNIUE_poxcTfVKsQdvmfw",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "nameCategory",
-									"value": "Limpieza",
-									"type": "text"
-								},
-								{
-									"key": "descriptionCategory",
-									"value": "Productos de limpieza para el hogar",
-									"type": "text"
+						{
+							"name": "GetProductsByCategory",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:2636/v1/user/product_filter_category/67c3d3783ce3dbc2218cf330",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"product_filter_category",
+										"67c3d3783ce3dbc2218cf330"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "http://localhost:2636/updateCategory/67aec05c09d81e61bc0b3302",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "2636",
-							"path": [
-								"updateCategory",
-								"67aec05c09d81e61bc0b3302"
-							]
+						{
+							"name": "GetProductsByName",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:2636/v1/user/product_filter_name?product_name=cuaderno",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"product_filter_name"
+									],
+									"query": [
+										{
+											"key": "product_name",
+											"value": "cuaderno"
+										}
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "DeleteCategory",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2FmMDBhNTc1ZTdmNGJjZTQ2MGIxOGUiLCJ1c2VybmFtZSI6ImRhdmlkQGtpbmFsLmVkdS5ndCIsIm5hbWUiOiJEYXZpZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTUyNDEzOSwiZXhwIjoxNzM5NTM0OTM5fQ.L3_cOHUZ8OV1Anxabq6nBKqNIUE_poxcTfVKsQdvmfw",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": []
-						},
-						"url": {
-							"raw": "http://localhost:2636/deleteCategory/67af0aad07cdacaac56be995",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "2636",
-							"path": [
-								"deleteCategory",
-								"67af0aad07cdacaac56be995"
-							]
+					"name": "Category",
+					"item": [
+						{
+							"name": "GetCategories",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/category",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"category"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "GetCategories",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2FmMDBhNTc1ZTdmNGJjZTQ2MGIxOGUiLCJ1c2VybmFtZSI6ImRhdmlkQGtpbmFsLmVkdS5ndCIsIm5hbWUiOiJEYXZpZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTUyNDEzOSwiZXhwIjoxNzM5NTM0OTM5fQ.L3_cOHUZ8OV1Anxabq6nBKqNIUE_poxcTfVKsQdvmfw",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": []
+					"name": "CarritoDeCompras",
+					"item": [
+						{
+							"name": "CreateCart",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"products\":[\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf319\",\r\n            \"quantity\":10\r\n        \r\n        },\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf319\",\r\n            \"quantity\":5\r\n        \r\n        },\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf31a\",\r\n            \"quantity\":10\r\n        },\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf31b\",\r\n            \"quantity\":2\r\n        },\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf31c\",\r\n            \"quantity\":3\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/cart_create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"cart_create"
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "http://localhost:2636/category",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "2636",
-							"path": [
-								"category"
-							]
+						{
+							"name": "InsertProductsToCart",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"products\":[\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf319\",\r\n            \"quantity\":5\r\n        },\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf319\",\r\n            \"quantity\":0\r\n        },\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf32a\",\r\n            \"quantity\":10\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/cart-insert-products/67c5c61544ac528f7245a80d",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"cart-insert-products",
+										"67c5c61544ac528f7245a80d"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				}
 			]
 		},
@@ -343,13 +715,208 @@
 			"name": "Auth",
 			"item": [
 				{
-					"name": "Admin",
+					"name": "Admins",
 					"item": [
+						{
+							"name": "LoginAdmin",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = JSON.parse(responseBody)\r",
+											"postman.setGlobalVariable('token',data.token)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userLogin",
+											"value": "admin@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "admin123@Ads",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
 						{
 							"name": "NewAdmin",
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "carlos",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "carlos@kinal.edu.gt",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "carlos32",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "45drerA@",
+											"type": "text"
+										},
+										{
+											"key": "state",
+											"value": "activo",
+											"type": "text"
+										},
+										{
+											"key": "role",
+											"value": "admin",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateProfileAsAdmin",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Pedro",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "pedro@kinal.edu.gt",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "username",
+											"value": "adminDefault",
+											"type": "text"
+										},
+										{
+											"key": "state",
+											"value": "activo",
+											"type": "text"
+										},
+										{
+											"key": "role",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "passwordAdmin",
+											"value": "admin123@Ads",
+											"type": "text"
+										},
+										{
+											"key": "newPasswordUser",
+											"value": "45drerA@",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/admin_update/67bdaad34e8e0028bd33e9f8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"admin_update",
+										"67bdaad34e8e0028bd33e9f8"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Clients",
+					"item": [
+						{
+							"name": "NewClient",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "urlencoded",
 									"urlencoded": [
@@ -364,50 +931,198 @@
 											"type": "text"
 										},
 										{
+											"key": "username",
+											"value": "david32",
+											"type": "text"
+										},
+										{
 											"key": "password",
 											"value": "45drerA@",
 											"type": "text"
-										},
-										{
-											"key": "state",
-											"value": "activo",
-											"type": "text"
-										},
-										{
-											"key": "rol",
-											"value": "",
-											"type": "text",
-											"disabled": true
 										}
 									]
 								},
 								"url": {
-									"raw": "http://localhost:2636/admin",
+									"raw": "http://localhost:2636/v1/user/client",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
 									"port": "2636",
 									"path": [
-										"admin"
+										"v1",
+										"user",
+										"client"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "NewClient Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Joaquin",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "joaquin@kinal.edu.gt",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "joaquin32",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "45drerA@",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/client",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"client"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "LoginClient",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = JSON.parse(responseBody)\r",
+											"postman.setGlobalVariable('token',data.token)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userLogin",
+											"value": "joaquin@kinal.edu.gt",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "45drerA@",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateProfileAsClient",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Pdero",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "david@kinal.edu.gt",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "username",
+											"value": "jona",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "passwordUser",
+											"value": "fd@12fdfA",
+											"type": "text"
+										},
+										{
+											"key": "newPasswordUser",
+											"value": "iou12@hmnc",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/client_update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"client_update"
 									]
 								}
 							},
 							"response": []
 						}
 					]
-				},
-				{
-					"name": "Client",
-					"item": []
-				},
-				{
-					"name": "Login",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
 				}
 			]
 		}

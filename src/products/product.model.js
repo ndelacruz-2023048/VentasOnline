@@ -22,14 +22,13 @@ const productSchema = Schema({
             userId:{
                 type:Schema.Types.ObjectId,
                 ref:'User',
-                required:true
             },
             stock:{
                 type:Number,
                 required:true,
                 default:0
             }
-        })
+        }),
     ],
     category:{
         type:Schema.Types.ObjectId,

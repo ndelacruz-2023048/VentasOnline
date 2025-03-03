@@ -1,0 +1,42 @@
+[{
+  "_id": {
+    "$oid": "67c3d2cb3ce3dbc2218cf313"
+  },
+  "nameCategory": "Decoración",
+  "descriptionCategory": "Productos de limpieza para el hogar"
+},
+{
+  "_id": {
+    "$oid": "67c3d2cb3ce3dbc2218cf314"
+  },
+  "nameCategory": "Escritura",
+  "descriptionCategory": "Artículos para escritura y dibujo"
+},
+{
+  "_id": {
+    "$oid": "67c3d2cb3ce3dbc2218cf315"
+  },
+  "nameCategory": "Organización",
+  "descriptionCategory": "Productos para organizar tu espacio de trabajo"
+},
+{
+  "_id": {
+    "$oid": "67c3d2cb3ce3dbc2218cf316"
+  },
+  "nameCategory": "Tecnología",
+  "descriptionCategory": "Dispositivos y accesorios tecnológicos"
+},
+{
+  "_id": {
+    "$oid": "67c3d2cb3ce3dbc2218cf317"
+  },
+  "nameCategory": "Papelería",
+  "descriptionCategory": "Materiales y suministros de oficina"
+},
+{
+  "_id": {
+    "$oid": "67c3d39c28e6e553c006db89"
+  },
+  "nameCategory": "Categoria por defecto",
+  "descriptionCategory": "Es un categoria global"
+}]
