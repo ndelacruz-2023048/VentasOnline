@@ -19,7 +19,7 @@ const cartSchema = Schema({
             },
             unitPrice:{
                 type:Schema.Types.Decimal128,
-                required:true
+                required:false
             }
         })
     ],

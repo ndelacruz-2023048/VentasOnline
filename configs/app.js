@@ -7,6 +7,8 @@ import productRoutes from '../src/products/product.routes.js'
 import categoryRoutes from '../src/category/category.routes.js'
 import adminRoutes from '../src/user/user.routes.js'
 import authRoutes from '../src/auth/auth.routes.js'
+import cartRoutes from '../src/cart/cart.routes.js'
+
 import { defaultCategory } from "../src/category/category.controller.js"
 import { adminDefault } from "../src/auth/auth.controller.js"
 
@@ -23,6 +25,7 @@ const routes = (app)=>{
     app.use('/v1/user',categoryRoutes)
     app.use('/v1/user',adminRoutes)
     app.use('/v1/user',authRoutes)
+    app.use('/v1/user',cartRoutes)
 }
 
 

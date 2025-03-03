@@ -9,6 +9,17 @@ export const validateAuthenticUser = async (request, response, next) => {
     }
     next()
 }
+export const validateAuthenticUserParam = async (request, response, next) => {
+    const { userId } = request.params
+    if(!userId){
+        return response.status(400).send({ success: false, message: 'User Id is required' })
+    }
+    const isAuthenticIdUser = await User.findOne({ _id: userId })
+    if (!isAuthenticIdUser) {
+        return response.status(400).send({ success: false, message: 'User passed in params is not valid' })
+    }
+    next()
+}
 
 export const validateObjectId = (request, response, next) => {
     const { idUserToUpdate } = request.params

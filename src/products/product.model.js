@@ -13,9 +13,6 @@ const productSchema = Schema({
         type:Schema.Types.Decimal128,
         required:[true,'Price of the product is required']
     },
-    discountedPrice:{
-        type:Schema.Types.Decimal128,
-    },
     stock:{
         type:Number,
         required:[true,'Stock of the product is required']

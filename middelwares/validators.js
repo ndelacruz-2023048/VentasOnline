@@ -72,3 +72,23 @@ export const validateFilterProductName =[
     query('product_name','Is required').notEmpty().withMessage('Product name cannot be empty'),
     validateErrors
 ]
+
+export const registerCart = [
+
+    body('products','Products is required').optional().isArray().withMessage('Products must be an array'),
+    body('products.*.productId','Product id is required').isMongoId().withMessage('Invalid product id'),
+    body('products.*.quantity','Quantity is required').notEmpty().withMessage('Quantity is required').isInt().withMessage('Invalid data type for quantity'),
+
+    body('totalItems','Total items is required').optional().notEmpty(),
+    body('totalPrice','Total price is required').optional().notEmpty(),    
+    body('status','Status is required').optional().notEmpty().isIn(['active','close','cancelled','pending']).withMessage('Invalid status did you mean active, close, cancelled or pending?'),
+    validateErrors
+]
+
+export const validateInsertProductsToCart = [
+    param('cartId','Cart id is required').notEmpty().isMongoId(),
+    body('products','Products is required').isArray().withMessage('Products must be an array'),
+    body('products.*.productId','Product id is required').isMongoId().withMessage('Invalid product id'),
+    body('products.*.quantity','Quantity is required').notEmpty().withMessage('Quantity is required').isInt().withMessage('Invalid data type for quantity'),
+    validateErrors
+]
