@@ -43,7 +43,7 @@ const verifyStockProduct = async (products,uid,response) => {
         const resultStock = reservedStock[0].stock - product.quantity
         if (resultStock < 0) {
             console.log('reservedStock insuficiente');
-            response.status(400).send({ success: false, message: `reservedStock not available for ${product.quantity} product: ${product.productId}`,productId:product.productId, stockAvailable: reservedStock[0].stock })
+            response.status(400).send({ success: false, message: `Stock not available to add ${product.quantity} products more: ${product.productId}`,productId:product.productId, stockAvailable: reservedStock[0].stock })
             return false
         }
     }
@@ -88,7 +88,12 @@ export const createCart = async (request, response) => {
                 }
             }
         }
-        
+
+        const existCartUser = await Cart.findOne({userId:uid,status:'active'})
+        if(existCartUser){
+            return response.status(400).send({success:false,message:"You have one cart active please continue buying or cancelled"})
+        }
+
         //Insertar el reservedStock para los productos que se crearon en el carrito
         await insertReservedStockProduct(data,uid)
 

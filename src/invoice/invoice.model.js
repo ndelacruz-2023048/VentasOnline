@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
 const invoiceSchema = Schema({
     userId:{
@@ -44,10 +44,6 @@ const invoiceSchema = Schema({
         type:Schema.Types.Decimal128,
         required:true
     },
-    discount:{
-        type:Schema.Types.Decimal128,
-        required:true
-    },
     paymentMethod:{
         type:String,
         required:true,
@@ -57,12 +53,8 @@ const invoiceSchema = Schema({
         type:String,
         required:true,
         enum:['paid','pending','failed']
-    },
-    status:{
-        type:String,
-        required:true,
-        enum:['active','close','cancelled','pending'],
-        default:'active'
     }
 
 })
+
+export default model('Invoice',invoiceSchema)
