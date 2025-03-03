@@ -39,6 +39,7 @@ export const saveProducts =async (request,response)=>{
             return response.status(400).send({success:false,message:'Category Id not found'})
         }
         let newProduct = new Product(data)
+        newProduct.reservedStock = data.stock
         await newProduct.save()
         response.status(200).send({success:true,message:'Product saved succesfully'})
     } catch (error) {

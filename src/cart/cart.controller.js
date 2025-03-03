@@ -15,16 +15,35 @@ const existProductInCart = async (cartId, productId) => {
     }
 }
 
-const verifyStockProduct = async (products,response) => {
+const insertReservedStockProduct = async (data, uid) => {
+    const dataReservedStock = uniqueProducts(data.products)
+
+
+    for (let product of dataReservedStock) {
+
+        const existProduct = await Product.findOne({ _id: product.productId, 'reservedStock.userId': uid })
+        if (!existProduct) {
+            //----------------
+            const { stock } = await Product.findOne({ _id: product.productId }).select('-_id stock');
+            const newReservedStock = {
+                userId: uid,
+                stock
+            };
+
+            const productReservedStockUpdated = await Product.findOneAndUpdate({ _id: product.productId }, { $push: { reservedStock: newReservedStock } }, { new: true })
+        }
+        //---------
+    }
+}
+
+const verifyStockProduct = async (products,uid,response) => {
     
     for (let product of products) {
-        const { stock } = await Product.findOne({ _id: product.productId }).select('_id stock')
-        const resultStock = stock - product.quantity
-        console.log("🚀 ~ verifyStockProduct ~ resultStock:", resultStock)
-        
+        const {reservedStock} = await Product.findOne({_id: product.productId, 'reservedStock.userId': uid },{ 'reservedStock.$': 1 })
+        const resultStock = reservedStock[0].stock - product.quantity
         if (resultStock < 0) {
-            console.log('stock insuficiente');
-            response.status(400).send({ success: false, message: `Stock not available for ${product.quantity} product: ${product.productId}`,productId:product.productId, stockStore: stock })
+            console.log('reservedStock insuficiente');
+            response.status(400).send({ success: false, message: `reservedStock not available for ${product.quantity} product: ${product.productId}`,productId:product.productId, stockAvailable: reservedStock[0].stock })
             return false
         }
     }
@@ -56,61 +75,68 @@ const uniqueProducts = (products)=>{
     return uniqueProductsArray
 }
 
-export const createCart = async(request,response)=>{
-    try{
-        const {uid} = request.user
+export const createCart = async (request, response) => {
+    try {
+        const { uid } = request.user
         const data = request.body
 
-        if(data.products !== undefined){
-            for(let product of data.products){
-                const isValidProduct = await Product.findOne({_id:product.productId})
-                if(!isValidProduct){
-                    return response.status(400).send({success:false,message:`Product Id not found: ${product.productId}`})
+        if (data.products !== undefined) {
+            for (let product of data.products) {
+                const isValidProduct = await Product.findOne({ _id: product.productId })
+                if (!isValidProduct) {
+                    return response.status(400).send({ success: false, message: `Product Id not found: ${product.productId}` })
                 }
             }
         }
+        
+        //Insertar el reservedStock para los productos que se crearon en el carrito
+        await insertReservedStockProduct(data,uid)
 
         let productsCart = [];
         let totalItems = 0;
         let totalPrice = 0;
 
-        if(data.products === undefined){
+        if (data.products === undefined) {
             productsCart = []
-        }else if(data.products.length > 0){
-            if(! await verifyStockProduct(uniqueProducts(data.products),response)) return
-            let dataProductsUnique = uniqueProducts(data.products)
-            productsCart = await Promise.all( dataProductsUnique.map(async(product)=>{
-                let addPriceProduct = {...product, unitPrice: await getProductPriceById(product.productId)}
+        } else if (data.products.length > 0) {
+            if (! await verifyStockProduct(uniqueProducts(data.products),uid, response)) return
 
-                //Actualizamos el stock del producto
-                await Product.findOneAndUpdate({_id:product.productId},{$inc:{stock:-product.quantity}},{new:true})
+            let dataProductsUnique = uniqueProducts(data.products)
+
+
+            productsCart = await Promise.all(dataProductsUnique.map(async (product) => {
+                let addPriceProduct = { ...product, unitPrice: await getProductPriceById(product.productId) }
+
+                //Actualizamos el reservedStock del producto
+                await Product.findOneAndUpdate({ _id: product.productId,'reservedStock.userId': uid  }, { $inc: { 'reservedStock.$.stock': -product.quantity } }, { new: true })
+
                 return addPriceProduct
             }))
-            for(let product of productsCart){
+            for (let product of productsCart) {
                 totalItems += product.quantity
                 totalPrice += product.unitPrice * product.quantity
             }
         }
         console.log(totalItems);
         console.log(totalPrice);
-        //atribute productsCart ready
+        // atribute productsCart ready
         console.log(productsCart);
-        
-        
-        //Save cart
-        const objectnewCart= {
-            userId:uid,
-            products:productsCart,
-            totalItems:totalItems,
-            totalPrice:totalPrice,
+
+
+        // Save cart
+        const objectnewCart = {
+            userId: uid,
+            products: productsCart,
+            totalItems: totalItems,
+            totalPrice: totalPrice,
         }
-        
+
         const newCart = new Cart(objectnewCart)
         await newCart.save()
-        
-        response.status(200).send({success:true,message:'Cart created succesfully',data})
-    }catch (error) {
-        response.status(500).send({success:false,message:'General Server error',error})
+
+        response.status(200).send({ success: true, message: 'Cart created succesfully' })
+    } catch (error) {
+        response.status(500).send({ success: false, message: 'General Server error', error })
     }
 }
 
@@ -150,19 +176,19 @@ export const insertProductsToCart = async (request, response) => {
             return response.status(400).send({success:false,message:'No products to update or insert to the cart'})
             //Validamos si el usuario envia productos
         }else if(data.products.length > 0){
-            //Verificamos si el stock del producto es suficiente
+            //Verificamos si el reservedStock del producto es suficiente
             if(!await verifyStockProduct(uniqueProducts(data.products),response)) return
 
             for(let product of uniqueProducts(data.products)){
                 const existeProduct = await existProductInCart(cartId,product.productId);
                 //Verificamos si el producto existe en el carrito para actualizarlo
                 if(existeProduct){
-                    await Product.findOneAndUpdate({_id:product.productId},{$inc:{stock:-product.quantity}},{new:true})
+                    await Product.findOneAndUpdate({_id:product.productId},{$inc:{reservedStock:-product.quantity}},{new:true})
                     await updateProductInCart(cartId,product.productId,product.quantity)
                     
                     //Si el producto no existe en el carrito lo agregamos al carrito
                 }else{
-                    await Product.findOneAndUpdate({_id:product.productId},{$inc:{stock:-product.quantity}},{new:true})
+                    await Product.findOneAndUpdate({_id:product.productId},{$inc:{reservedStock:-product.quantity}},{new:true})
                     const newProduct = {...product,unitPrice:await getProductPriceById(product.productId)}
                     await Cart.findOneAndUpdate({_id:cartId},{$push:{products:newProduct}},{new:true})
                     await updateProductInCart(cartId,product.productId,product.quantity)

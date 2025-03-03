@@ -17,6 +17,20 @@ const productSchema = Schema({
         type:Number,
         required:[true,'Stock of the product is required']
     },
+    reservedStock:[
+        new Schema({
+            userId:{
+                type:Schema.Types.ObjectId,
+                ref:'User',
+                required:true
+            },
+            stock:{
+                type:Number,
+                required:true,
+                default:0
+            }
+        })
+    ],
     category:{
         type:Schema.Types.ObjectId,
         ref:'Category',
