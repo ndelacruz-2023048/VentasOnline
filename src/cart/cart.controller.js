@@ -16,10 +16,11 @@ const existProductInCart = async (cartId, productId) => {
 }
 
 const updateProductInCart = async (cartId, productId, quantity) => {
+    //Actualizar la cantidad del producto en el carrito
     const cartProductOld = await Cart.findOne({ _id: cartId, 'products.productId': productId },{ 'products.$': 1 })
-    // const cartUpdated = await Cart.findOneAndUpdate({ _id: cartId, 'products.productId': productId }, { $set: { 'products.$.quantity': quantity } }, { new: true })
-
-    return cartProductOld
+    const cartProductOldQuantity= cartProductOld.products[0].quantity
+    const cartUpdated = await Cart.findOneAndUpdate({ _id: cartId, 'products.productId': productId }, { $set: { 'products.$.quantity': quantity+cartProductOldQuantity } }, { new: true })
+    return cartUpdated
 }
 
 export const createCart = async(request,response)=>{
@@ -44,8 +45,8 @@ export const createCart = async(request,response)=>{
             productsCart = []
         }else if(data.products.length > 0){
             productsCart = await Promise.all( data.products.map(async(product)=>{
-                let addPriceProduct = {...product, unitPrice: await getProductPriceById(product.productId)}
-                return addPriceProduct
+            let addPriceProduct = {...product, unitPrice: await getProductPriceById(product.productId)}
+            return addPriceProduct
 
             }))
             for(let product of productsCart){
@@ -79,47 +80,64 @@ export const createCart = async(request,response)=>{
 export const insertProductsToCart = async (request, response) => {
     try {
         const {uid} = request.user
-        const { userId, cartId } = request.params
+        const { cartId } = request.params
         const data = request.body
-        //ir a buscar el carrito con el id
+        //Buscar en el carrito el Id
         const existCartWithUser = await Cart.findOne({_id:cartId,userId:uid})
 
+        //Validamos que el carrito a actualizar pertenesca al usuario
         if (!existCartWithUser) {
             return response.status(400).send({ success: false, message: 'Cart not found with your user' })
         }
 
-        let productsCart = [];
+
+        //Validamos que el Id del Producto exista 
+        if(data.products !== undefined){
+            for(let product of data.products){
+                const isValidProduct = await Product.findOne({_id:product.productId})
+                if(!isValidProduct){
+                    return response.status(400).send({success:false,message:`Product Id not found: ${product.productId}`})
+                }
+            }
+        }
+
+        //Variables para el total de items y precio
         let totalItems = 0;
         let totalPrice = 0;
 
-        if(data.products === undefined){
-            productsCart= []
+        //Validamos si el usuario no envia productos
+        if(data.products.length=== 0){
+            return response.status(400).send({success:false,message:'No products to update or insert to the cart'})
+        //Validamos si el usuario envia productos
         }else if(data.products.length > 0){
-            productsCart = await Promise.all(data.products.map(async(product)=>{
-                
+
+            data.products.map(async(product)=>{
                 const existeProduct = await existProductInCart(cartId,product.productId);
+                //Verificamos si el producto existe en el carrito para actualizarlo
                 if(existeProduct){
-                    console.log(await updateProductInCart(cartId,product.productId,product.quantity))
+                    await updateProductInCart(cartId,product.productId,product.quantity)
+
+                //Si el producto no existe en el carrito lo agregamos al carrito
+                }else{
+                    const newProduct = {...product,unitPrice:await getProductPriceById(product.productId)}
+                    await Cart.findOneAndUpdate({_id:cartId},{$push:{products:newProduct}},{new:true})
                 }
+            })
+            
+            //Nos traemos todos los datos actuales del carrito
+            const statusProductsUpdated = await Cart.findOne({_id: cartId}).select('products')
 
-                // let addPriceProduct = {...product, unitPrice: await getProductPriceById(product.productId)}
-                // return addPriceProduct
+            for(let product of statusProductsUpdated.products){
+                totalItems += product.quantity
+                totalPrice += product.unitPrice * product.quantity
+            }
 
-
-
-            }))
-            // for(let product of productsCart){
-            //     totalItems += product.quantity
-            //     totalPrice += product.unitPrice * product.quantity
-            // }
-
+            const cartUpdated = await Cart.findOneAndUpdate({_id:cartId},{totalItems:totalItems,totalPrice:totalPrice},{new:true})
+            return response.status(200).send({success:true,message:'Products inserted to cart succesfully',cartUpdated})
         }
 
         response.status(200).send({success:true,message:'Products inserted to cart succesfully'})
     } catch (error) {
         response.status(500).send({success:false,message:'General Server error',error})
     }
-}
-export const insertProductToCart = async (request, response) => {
-
 }
