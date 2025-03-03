@@ -152,8 +152,7 @@ export const insertProductsToCart = async (request, response) => {
         if (!existCartWithUser) {
             return response.status(400).send({ success: false, message: 'Cart not found with your user' })
         }
-        
-        
+         
         //Validamos que el Id del Producto exista 
         if(data.products !== undefined){
             for(let product of data.products){
@@ -163,9 +162,6 @@ export const insertProductsToCart = async (request, response) => {
                 }
             }
         }
-        
-
-        
 
         //Variables para el total de items y precio
         let totalItems = 0;
@@ -176,19 +172,21 @@ export const insertProductsToCart = async (request, response) => {
             return response.status(400).send({success:false,message:'No products to update or insert to the cart'})
             //Validamos si el usuario envia productos
         }else if(data.products.length > 0){
+
+            await insertReservedStockProduct(data,uid)
             //Verificamos si el reservedStock del producto es suficiente
-            if(!await verifyStockProduct(uniqueProducts(data.products),response)) return
+            if(!await verifyStockProduct(uniqueProducts(data.products),uid,response)) return
 
             for(let product of uniqueProducts(data.products)){
                 const existeProduct = await existProductInCart(cartId,product.productId);
                 //Verificamos si el producto existe en el carrito para actualizarlo
                 if(existeProduct){
-                    await Product.findOneAndUpdate({_id:product.productId},{$inc:{reservedStock:-product.quantity}},{new:true})
+                    await Product.findOneAndUpdate({_id:product.productId,'reservedStock.userId': uid},{$inc:{'reservedStock.$.stock':-product.quantity}},{new:true})
                     await updateProductInCart(cartId,product.productId,product.quantity)
                     
-                    //Si el producto no existe en el carrito lo agregamos al carrito
+                //Si el producto no existe en el carrito lo agregamos al carrito
                 }else{
-                    await Product.findOneAndUpdate({_id:product.productId},{$inc:{reservedStock:-product.quantity}},{new:true})
+                    await Product.findOneAndUpdate({_id:product.productId,'reservedStock.userId': uid},{$inc:{'reservedStock.$.stock':-product.quantity}},{new:true})
                     const newProduct = {...product,unitPrice:await getProductPriceById(product.productId)}
                     await Cart.findOneAndUpdate({_id:cartId},{$push:{products:newProduct}},{new:true})
                     await updateProductInCart(cartId,product.productId,product.quantity)
