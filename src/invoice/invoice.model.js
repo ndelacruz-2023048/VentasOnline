@@ -6,11 +6,6 @@ const invoiceSchema = Schema({
         ref:'User',
         required:true
     },
-    cartId:{
-        type:Schema.Types.ObjectId,
-        ref:'Cart',
-        required:true
-    },
     products:[
         new Schema({
             productId:{
@@ -49,10 +44,9 @@ const invoiceSchema = Schema({
         required:true,
         enum:['credit','debit','cash']
     },
-    paymentStatus:{
+    NIT:{
         type:String,
-        required:true,
-        enum:['paid','pending','failed']
+        required:true
     }
 
 })

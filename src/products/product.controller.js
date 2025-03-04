@@ -54,13 +54,18 @@ export const updateProducts = async(request,response)=>{
         if(!isValidProduct){
             return response.status(400).send({success:false,message:'Product Id not found'})
         }
+
+       
         let isValidCategory = await Category.findOne({_id:data.category})
         if(!isValidCategory){
             return response.status(400).send({success:false,message:'Category Id not found'})
         }
+        
+        
+        
         let updateProduct = await Product.findByIdAndUpdate(id_product,data,{new:true})
         console.log(updateProduct);
-        response.status(200).send({success:true,message:'Product Updated Succesfully',updateProduct})
+        response.status(200).send({success:true,message:'Product Updated Succesfully'})
     } catch (error) {
         response.status(500).send({success:false,message:'General Server error',error})
     }
@@ -105,6 +110,26 @@ export const getProductsByName = async(request,response)=>{
             return response.status(400).send({success:false,message:"Not products founded"})
         }
         response.status(200).send({success:true,message:'Products fetched succesfully',product})
+    } catch (error) {
+        response.status(500).send({success:false,message:'General Server error',error})
+    }
+}
+
+export const addStockProduct = async(request,response)=>{
+    try {
+
+        let {id_product} = request.params
+        let {stock} = request.body
+        let isValidProduct = await Product.findOne({_id:id_product})
+        if(!isValidProduct){
+            return response.status(400).send({success:false,message:'Product Id not found'})
+        }
+
+        const addStock = await Product.findOneAndUpdate({_id:id_product},{$inc:{stock:+stock}},{new:true})
+        const addStock2 = await Product.findOneAndUpdate({_id:id_product},{$inc:{'reservedStock.$[].stock':+stock}},{new:true})
+
+
+        response.status(200).send({success:true,message:'Stock added succesfully'})
     } catch (error) {
         response.status(500).send({success:false,message:'General Server error',error})
     }
