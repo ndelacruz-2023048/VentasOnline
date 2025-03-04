@@ -49,7 +49,8 @@
 										{
 											"key": "stock",
 											"value": "15",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "category",
@@ -59,6 +60,11 @@
 										{
 											"key": "size",
 											"value": "10cm",
+											"type": "text"
+										},
+										{
+											"key": "reserverdStock",
+											"value": "[]",
 											"type": "text"
 										}
 									]
@@ -108,20 +114,12 @@
 										{
 											"key": "price",
 											"value": "25.35",
-											"type": "text",
-											"disabled": true
+											"type": "text"
 										},
 										{
 											"key": "discountedPrice",
 											"value": "22.20",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "stock",
-											"value": "10",
-											"type": "text",
-											"disabled": true
+											"type": "text"
 										},
 										{
 											"key": "category",
@@ -296,6 +294,44 @@
 											"key": "product_name",
 											"value": "cuaderno"
 										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddStockToProduct",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "stock",
+											"value": "10",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/product_addStock/67c3d3783ce3dbc2218cf319",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"product_addStock",
+										"67c3d3783ce3dbc2218cf319"
 									]
 								}
 							},
@@ -647,7 +683,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"products\":[\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf319\",\r\n            \"quantity\":10\r\n        \r\n        },\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf319\",\r\n            \"quantity\":5\r\n        \r\n        },\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf31a\",\r\n            \"quantity\":10\r\n        },\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf31b\",\r\n            \"quantity\":2\r\n        },\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf31c\",\r\n            \"quantity\":3\r\n        }\r\n    ]\r\n}",
+									"raw": "{\r\n    \"products\":[\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf31a\",\r\n            \"quantity\":1\r\n        \r\n        },\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf319\",\r\n            \"quantity\":6\r\n        \r\n        },\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf31b\",\r\n            \"quantity\":1\r\n        }\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -683,7 +719,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"products\":[\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf319\",\r\n            \"quantity\":5\r\n        },\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf319\",\r\n            \"quantity\":0\r\n        },\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf32a\",\r\n            \"quantity\":10\r\n        }\r\n    ]\r\n}",
+									"raw": "{\r\n    \"products\":[\r\n        {\r\n            \"productId\":\"67c3d3783ce3dbc2218cf319\",\r\n            \"quantity\":8\r\n        }\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -691,7 +727,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:2636/v1/user/cart-insert-products/67c5c61544ac528f7245a80d",
+									"raw": "http://localhost:2636/v1/user/cart-insert-products/67c67dae703459f87335bb86",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -701,7 +737,95 @@
 										"v1",
 										"user",
 										"cart-insert-products",
-										"67c5c61544ac528f7245a80d"
+										"67c67dae703459f87335bb86"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Order",
+					"item": [
+						{
+							"name": "GenerateOrder",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "paymentMethod",
+											"value": "credit",
+											"type": "text"
+										},
+										{
+											"key": "NIT",
+											"value": "202911-0",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/order",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"order"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Invoice",
+					"item": [
+						{
+							"name": "GetFacturasById",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:2636/v1/user/invoice-user/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"invoice-user",
+										""
 									]
 								}
 							},
@@ -895,6 +1019,44 @@
 										"v1",
 										"user",
 										"admin_update",
+										"67bdaad34e8e0028bd33e9f8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteProfileAsAdmin",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "passwordAdmin",
+											"value": "admin123@Ads",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/deleteProfileAdmin/67bdaad34e8e0028bd33e9f8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"deleteProfileAdmin",
 										"67bdaad34e8e0028bd33e9f8"
 									]
 								}
@@ -1117,6 +1279,43 @@
 										"v1",
 										"user",
 										"client_update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteProfile",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "passwordClient",
+											"value": "45drerA@",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:2636/v1/user/deleteProfileClient",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "2636",
+									"path": [
+										"v1",
+										"user",
+										"deleteProfileClient"
 									]
 								}
 							},
