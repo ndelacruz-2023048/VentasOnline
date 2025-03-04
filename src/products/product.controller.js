@@ -117,19 +117,32 @@ export const getProductsByName = async(request,response)=>{
 
 export const addStockProduct = async(request,response)=>{
     try {
-
+        
         let {id_product} = request.params
         let {stock} = request.body
         let isValidProduct = await Product.findOne({_id:id_product})
         if(!isValidProduct){
             return response.status(400).send({success:false,message:'Product Id not found'})
         }
-
+        
         const addStock = await Product.findOneAndUpdate({_id:id_product},{$inc:{stock:+stock}},{new:true})
         const addStock2 = await Product.findOneAndUpdate({_id:id_product},{$inc:{'reservedStock.$[].stock':+stock}},{new:true})
-
-
+        
+        
         response.status(200).send({success:true,message:'Stock added succesfully'})
+    } catch (error) {
+        response.status(500).send({success:false,message:'General Server error',error})
+    }
+}
+
+export const getProductsSoldOut = async(request,response)=>{
+    try {
+        const getProducts = await Product.find({stock:0})
+        if(!getProducts){
+            return response.status(400).send({success:false,message:'No products Sold Out'})
+        }
+        response.status(200).send({success:true,message:'Products Sold Out',getProducts})
+
     } catch (error) {
         response.status(500).send({success:false,message:'General Server error',error})
     }

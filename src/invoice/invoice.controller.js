@@ -2,8 +2,8 @@ import Invoice from '../invoice/invoice.model.js'
 
 export const getInvoicesByUser =async (request,response)=>{
     try {
-        const {uid}= request.user
-        const invoices =await Invoice.find({userId:uid}).populate('products.productId')
+        const {userId}= request.params
+        const invoices =await Invoice.find({userId:userId}).populate('products.productId')
         if(invoices.length===0){
             return response.status(400).send({success:false,message:'No invoices yet.'})
         }

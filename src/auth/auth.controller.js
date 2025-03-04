@@ -2,6 +2,7 @@
 import { comparePassword, encrypt } from '../../utils/encrypt.js';
 import { generateJwt } from '../../utils/jwt.js';
 import User from '../user/user.model.js';
+import Invoice from '../invoice/invoice.model.js'
 
 export const login = async (request, response) => {
     try {
@@ -23,8 +24,8 @@ export const login = async (request, response) => {
         }
 
         let token = generateJwt(loginUser)
-
-        response.status(200).send({ success: true, message: 'Login success',user: loginUser , token});
+        const invoicesData = await Invoice.find({userId:loginUser.uid})
+        response.status(200).send({ success: true, message: 'Login success',user: loginUser , token,Invoices:invoicesData});
     } catch (error) {
         response.status(500).send({success:false,message:'General Server error',error})
     }
