@@ -49,6 +49,10 @@ const invoiceSchema = Schema({
         required:true
     }
 
+},
+{
+    versionKey:false,
+    timestamps:true
 })
 
 export default model('Invoice',invoiceSchema)
