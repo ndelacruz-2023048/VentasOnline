@@ -113,3 +113,13 @@ export const registerInvoice = [
     body('NIT').notEmpty(),
     validateErrors
 ]
+
+export const validateDeleteUserAsAdmin= [
+    body('passwordAdmin','Password of admin is required').notEmpty(),
+    validateErrors
+]
+
+export const validateDeleteUserAsClient= [
+    body('passwordClient','Password of client is required').notEmpty(),
+    validateErrors
+]

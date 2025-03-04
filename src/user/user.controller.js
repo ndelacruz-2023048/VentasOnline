@@ -123,3 +123,40 @@ export const updateProfileAsClient =async (request,response)=>{
         response.status(500).send({ sucess: false, message: 'General Server error', error })
     }
 }
+
+export const deleteProfileAsAdmin =async (request,response)=>{
+    try {
+        const {userId} = request.params
+        const {uid} = request.user
+        const {passwordAdmin} = request.body
+        const {password} = await User.findOne({_id:uid})
+        
+        let isValidPassword = await comparePassword(password,passwordAdmin)
+        if(!isValidPassword){
+            return response.status(400).send({sucess:false,message:'Invalid password'})
+        }
+
+        //Verificamos que el usuario sea administrador
+        response.status(401).send({sucess:false,message:'Profile of one user is deleted'})
+        await User.findByIdAndDelete(userId)
+    }catch(error){
+        response.status(500).send({sucess:false,message:'General Server error',error})
+    }
+}
+
+export const deleteProfileAsClient =async (request,response)=>{
+    try {
+        const {uid} = request.user
+        const {passwordClient} = request.body
+        const {password} = await User.findOne({_id:uid})
+        
+        let isValidPassword = await comparePassword(password,passwordClient)
+        if(!isValidPassword){
+            return response.status(400).send({sucess:false,message:'Invalid password'})
+        }
+        await User.findByIdAndDelete(uid)
+        response.status(200).send({sucess:true,message:'Profile deleted'})
+    } catch (error) {
+        response.status(500).send({sucess:false,message:'General Server error',error})
+    }
+}
